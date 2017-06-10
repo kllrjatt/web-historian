@@ -44,7 +44,7 @@ exports.isUrlInList = function (url, callback) {
   exports.readListOfUrls(function (sites) {
     // check to see if the passed URL is present in the sites 
     // if it is present  run the call back on it.
-    var status = _.some(sites, function (site, i) {
+    var status = _.some(sites, function (site) {
       return site.match(url);
     });
     callback(status);
@@ -61,7 +61,26 @@ exports.addUrlToList = function (url, callback) {
 };
 
 exports.isUrlArchived = function (url, callback) {
+  // get path to archived files 
+  var archivePath = path.join(exports.paths.archivedSites, url);
+  // check if url is archived 
+  fs.access(archivePath, function (hasSite) {
+    // call back result ... if no error , hasSiteis present 
+    // run call back on not has site 
+    callback(!hasSite);
+  });
+
 };
 
 exports.downloadUrls = function (urls) {
+  // iterate throught all the urls 
+  for (var i = 0; i < urls.length; i++) {
+    // check if url is present 
+    if (urls[i]) {
+      // request url with http pre fix and pipe it to local file 
+      // use pipe and create write stream to ge tthis done 
+      // each website needs its own location to be saved within archived sites
+      request('http://' + urls[i]).pipe(fs.createWriteStream(exports.paths.archivedSites + '/' + urls[i]));
+    }
+  }
 };

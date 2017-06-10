@@ -19,3 +19,26 @@ exports.serveAssets = function (res, asset, callback) {
 
 
 // As you progress, keep thinking about what helper functions you can put here!
+
+
+// add http responses 
+
+exports.httpResponses = {
+  // redirect reponse
+  redirect: function () {
+
+  },
+  // standard response 
+  response: function () {
+
+  },
+  // collect data from chunks 
+  data: function () {
+
+  },
+  // send resource not found error 
+  error: function () {
+
+  }
+
+};

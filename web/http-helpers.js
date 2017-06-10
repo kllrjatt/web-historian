@@ -26,19 +26,19 @@ exports.serveAssets = function (res, asset, callback) {
 exports.httpResponses = {
   // redirect reponse
   redirect: function () {
-
+    // add response write head and response end 
   },
   // standard response 
   response: function () {
-
+    // add response write head and response end 
   },
   // collect data from chunks 
   data: function () {
-
+    // add response write head and response end 
   },
   // send resource not found error 
   error: function () {
-
+    // add response write head and response end 
   }
 
 };

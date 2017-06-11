@@ -76,7 +76,7 @@ exports.httpResponses = {
   data: function (request, callback) {
     // add response write head and response end 
     var completeData = '';
-
+  // request on data -- join chunks  
     request.on('data', function (chunk) {
       completeData += chunk;
     });
